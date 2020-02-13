@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -35,6 +36,11 @@ namespace CSVReader
                     zip     = data[3]
                 };
                 return dataFile;
+            }
+            public static void ToJson(string path , List<DataFile> values)
+            {
+                var json = JsonConvert.SerializeObject(values);
+                File.WriteAllText(path,json);
             }
         }
     }
